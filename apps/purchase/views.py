@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import PurchaseOrderSerializer
+from .models import PurchaseOrder
 
-# Create your views here.
+class PurchaseViewSet(viewsets.ModelViewSet):
+    queryset = PurchaseOrder.objects.all()
+    serializer_class = PurchaseOrderSerializer
+    

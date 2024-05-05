@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from .models import Vendor,HistoricalPerformance
+from .serializers import VendorSerializer,HistoricalPerformanceSerializer
+from rest_framework import generics,viewsets
 
-# Create your views here.
+
+class VendorViewSet(viewsets.ModelViewSet):
+    queryset = Vendor.objects.all()
+    serializer_class = VendorSerializer

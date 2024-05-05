@@ -1,7 +1,8 @@
 from django.db import models
-from vendors.models import Vendor
+from apps.vendors.models import Vendor
 from django.core.validators import MinLengthValidator,MaxLengthValidator
-class Performance:
+
+class PurchaseOrder(models.Model):
     STATUS_CHOICES = [
         ('pending','Pending'),
         ('completed','Completed'),

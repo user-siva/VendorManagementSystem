@@ -6,6 +6,7 @@ from .models import PurchaseOrder
 @receiver(post_save,sender=PurchaseOrder)
 def update_performance_metrics(sender,instance,**kwargs):
     vendor = instance.vendor
+    
 
     #on_time_delivery_rate
     completed_orders = vendor.purchase_orders.filter(status='completed')
@@ -23,7 +24,7 @@ def update_performance_metrics(sender,instance,**kwargs):
         avg_rating = completed_orders_with_rating.aggregate(avg_rating=models.Avg('quality_rating'))['avg_rating']
         if avg_rating is not None:
             vendor.quality_rating_avg = avg_rating
-
+    
     #average response time
     acknowledge_orders = completed_orders.exclude(acknowledgment_date__isnull=True)
     if acknowledge_orders.exists():

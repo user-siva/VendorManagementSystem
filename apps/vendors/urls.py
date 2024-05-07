@@ -6,6 +6,6 @@ router = routers.DefaultRouter()
 router.register(r'vendors',VendorViewSet,basename='vendor')
 
 urlpatterns = [
-    path('vendors/<int:pk>/performance/',VendorPerformanceView.as_view(),name='vendor-performance'),
+    path('vendors/<str:vendor_code>/performance/',VendorPerformanceView.as_view(),name='vendor-performance'),
     path('',include(router.urls)),
 ]

@@ -11,6 +11,7 @@ class VendorViewSet(viewsets.ModelViewSet):
 class VendorPerformanceView(generics.RetrieveAPIView):
     queryset = Vendor.objects.all()
     serializer_class = VendorSerializer
+    lookup_field = 'vendor_code'
     
     def retrieve(self,request,*args,**kwargs):
         vendor = self.get_object()

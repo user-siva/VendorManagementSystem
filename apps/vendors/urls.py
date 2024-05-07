@@ -1,10 +1,11 @@
 from rest_framework import routers
 from django.urls import path,include
-from .views import VendorViewSet
+from .views import VendorViewSet,VendorPerformanceView
 
 router = routers.DefaultRouter()
 router.register(r'vendors',VendorViewSet,basename='vendor')
 
 urlpatterns = [
-    path('',include(router.urls))
+    path('vendors/<int:pk>/performance/',VendorPerformanceView.as_view(),name='vendor-performance'),
+    path('',include(router.urls)),
 ]

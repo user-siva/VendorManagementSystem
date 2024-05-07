@@ -20,7 +20,9 @@ def update_performance_metrics(sender,instance,**kwargs):
     #quality rating average
     completed_orders_with_rating = completed_orders.exclude(quality_rating__isnull=True)
     if completed_orders_with_rating.exists():
-        vendor.quality_rating_avg = completed_orders_with_rating.aggregate(avg_rating=models.Avg('quality_rating')['avg_rating'])
+        avg_rating = completed_orders_with_rating.aggregate(avg_rating=models.Avg('quality_rating'))['avg_rating']
+        if avg_rating is not None:
+            vendor.quality_rating_avg = avg_rating
 
     #average response time
     acknowledge_orders = completed_orders.exclude(acknowledgment_date__isnull=True)

@@ -13,7 +13,6 @@ class PurchaseViewSet(viewsets.ModelViewSet):
 class AcknowledgePurchaseOrderView(generics.RetrieveUpdateAPIView):
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
-    lookup_field = 'po_number'
     
     def partial_update(self,request,*args,**kwargs):
         instance = self.get_object()

@@ -26,9 +26,13 @@ def update_performance_metrics(sender,instance,**kwargs):
             vendor.quality_rating_avg = avg_rating
     
     #average response time
-    acknowledge_orders = completed_orders.exclude(acknowledgment_date__isnull=True)
+    print("acknowledged")
+    acknowledge_orders = vendor.purchase_orders.exclude(acknowledgment_date__isnull=True)
+    print("acknowledge_orders:",acknowledge_orders)
     if acknowledge_orders.exists():
+        print("ackowledged")
         response_times = [(order.acknowledgment_date - order.issue_date).total_seconds() for order in acknowledge_orders]
+        print("response_times:",response_times)
         vendor.average_response_time = sum(response_times) / len(response_times)
 
     #fullfillment rate

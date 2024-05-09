@@ -13,6 +13,12 @@ class VendorViewSet(viewsets.ModelViewSet):
     serializer_class = VendorSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
+class HistoricalPerformanceViewSet(viewsets.ModelViewSet):
+    queryset = HistoricalPerformance.objects.all()
+    serializer_class = HistoricalPerformanceSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
    
 
 class VendorPerformanceView(generics.RetrieveAPIView):

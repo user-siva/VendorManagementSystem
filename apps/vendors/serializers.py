@@ -12,7 +12,7 @@ class VendorSerializer(serializers.HyperlinkedModelSerializer):
 class HistoricalPerformanceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = HistoricalPerformance
-        fields = ['pk','Vendor','date','on_time_delivery_rate','quality_rating_avg','average_response_time','fulfillment_rate']
+        fields = ['pk','vendor','date','on_time_delivery_rate','quality_rating_avg','average_response_time','fulfillment_rate']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

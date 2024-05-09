@@ -2,17 +2,23 @@ from rest_framework import viewsets
 from .serializers import PurchaseOrderSerializer
 from .models import PurchaseOrder,Vendor
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
 from rest_framework import generics,status
 
 class PurchaseViewSet(viewsets.ModelViewSet):
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     
 class AcknowledgePurchaseOrderView(generics.RetrieveUpdateAPIView):
     queryset = PurchaseOrder.objects.all()
     serializer_class = PurchaseOrderSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     
     def partial_update(self,request,*args,**kwargs):
         instance = self.get_object()

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .serializers import PurchaseOrderSerializer
-from .models import PurchaseOrder,Vendor
+from .models import PurchaseOrder
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated

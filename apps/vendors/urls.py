@@ -1,7 +1,6 @@
 from rest_framework import routers
 from django.urls import path,include
 from .views import VendorViewSet,VendorPerformanceView,CreateTokenView,CreateUserView
-from rest_framework.authtoken.views import ObtainAuthToken
 
 router = routers.DefaultRouter()
 router.register(r'vendors',VendorViewSet,basename='vendor')
